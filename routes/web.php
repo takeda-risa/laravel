@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\FollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::resource('posts', PostController::class);
+
+
+Route::resource('follows', FollowController::class)->only([
+  'index', 'store', 'destroy'
+]);
+Route::get('/follower', [FollowController::class, 'followerIndex']);

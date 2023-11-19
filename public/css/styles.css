@@ -1,0 +1,33 @@
+body{
+  max-width: 1200px;
+  margin: auto;
+}
+.header{
+  display: flex;
+  list-style: none;
+  margin: 20px 0;
+}
+.header div{
+  margin-right: 30px;
+}
+.header_nav{
+  margin:0 0 0 auto;
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+.header_nav li {
+  margin-right: 30px;
+}
+/* エラーメッセージ用のスタイル */
+.error {
+  color: red;
+}
+/* 成功メッセージ用のスタイル */
+.success {
+  color: green;
+}
+/* 削除ボタン用のスタイル */
+.delete {
+  display: inline;
+}
