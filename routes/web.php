@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,11 @@ Route::resource('follows', FollowController::class)->only([
   'index', 'store', 'destroy'
 ]);
 Route::get('/follower', [FollowController::class, 'followerIndex']);
+
+Route::controller(UserController::class)->group(function () { 
+  Route::get('/users/edit',  'edit')->name('users.edit');
+  Route::patch('/users', 'update')->name('users.update');
+  Route::resource('users', UserController::class)->only([
+  'show',
+  ]);  
+});

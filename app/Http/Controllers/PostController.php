@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
 use App\Http\Requests\PostRequest;
+use App\Models\Post;
+use App\Models\User;
+
+
 
 class PostController extends Controller
 {
@@ -15,18 +18,19 @@ class PostController extends Controller
     }
     
     // 投稿一覧
-    public function index()
-    {
+    public function index(){
         $user = \Auth::user();
-        $posts = \Auth::user()->posts()->latest()->get();
+        $follow_user_ids = $user->follow_users->pluck('id');
+        $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids )->latest()->get();
+        $recommended_users = User::recommend($user->id)->whereNotIn('id' , $follow_user_ids)->latest()->get();
         
-/*        $follow_user_ids = $user->follow_users->pluck('id');
-        $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids )->latest()->paginate(5);
-*/        return view('posts.index', [
+        
+        return view('posts.index', [
             'title' => '投稿一覧',
-            'posts' => $posts,
-            // 'posts' => $user_posts,
-            // 'recommended_users' => User::recommend($user->id)->get()
+            'posts' => $user_posts,
+            // 'recommended_users' => User::recommend($user->id)->latest()->get(),
+            'recommended_users' => $recommended_users,
+            'user' => $user,
         ]);
     }
 

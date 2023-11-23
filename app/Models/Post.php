@@ -14,5 +14,9 @@ class Post extends Model
     public function user(){
       return $this->belongsTo(User::class);
     }    
+    
+    public function scopeRecommend($query, $self_id){
+        return $query->where('user_id', $self_id)->latest()->limit(10);
+    }    
 }
 

@@ -31,3 +31,7 @@ body{
 .delete {
   display: inline;
 }
+/* フォローボタン */
+.follow {
+  cursor: pointer;
+}
