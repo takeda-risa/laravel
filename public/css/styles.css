@@ -1,11 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+ 
+.logo {
+    font-family: 'Sacramento', cursive;
+    font-size: 40px;
+}
+.logo{
+  color: #cc5800;
+}
+
+
+.btn{
+  padding: 0.2rem 0.5rem;
+  border:none;
+  border-radius: 10px;
+  margin:10px 0;
+  transition: 0.5s;
+}
+.btn:hover{
+  opacity: 0.5;
+}
+.in_btn{
+  background-color: #0068B7;
+  color:#fff;
+}
+.out_btn{
+  background-color: #b8000c;
+  color:#fff;
+  margin: 0;
+}
+.follow_btn{
+  background-color: #B8AB00;
+  color:#fff;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  transition: 0.5s;
+  color: #5000b8;
+}
+a:hover{
+  opacity: 0.5;
+}
+
 body{
   max-width: 1200px;
   margin: auto;
+  color: #333
 }
 .header{
   display: flex;
   list-style: none;
   margin: 20px 0;
+  align-items: center;
 }
 .header div{
   margin-right: 30px;
@@ -19,6 +66,12 @@ body{
 .header_nav li {
   margin-right: 30px;
 }
+
+
+li{
+  list-style-type:none;
+}
+
 /* エラーメッセージ用のスタイル */
 .error {
   color: red;
@@ -34,4 +87,25 @@ body{
 /* フォローボタン */
 .follow {
   cursor: pointer;
+}
+
+.recommended_users{
+  display: flex;
+  padding: 0;
+  margin: 2rem 0;
+}
+.recommended_users li{
+  margin-right: 1rem;
+}
+
+.post{
+  margin:2rem 0; 
+  padding: 0;}
+.post li{
+  margin: 1rem 0;
+
+}
+
+.new_post{
+  border-bottom: 3px dotted #5000b8;
 }

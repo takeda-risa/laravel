@@ -18,12 +18,39 @@ class PostController extends Controller
     }
     
     // 投稿一覧
-    public function index(){
+    // public function index(){
+    //     $user = \Auth::user();
+    //     $follow_user_ids = $user->follow_users->pluck('id');
+    //     $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids )->latest()->get();
+    //     $recommended_users = User::recommend($user->id)->whereNotIn('id' , $follow_user_ids)->latest()->get();
+        
+        
+    //     return view('posts.index', [
+    //         'title' => '投稿一覧',
+    //         'posts' => $user_posts,
+    //         // 'recommended_users' => User::recommend($user->id)->latest()->get(),
+    //         'recommended_users' => $recommended_users,
+    //         'user' => $user,
+    //     ]);
+    // }
+    public function index(Request $request){
         $user = \Auth::user();
         $follow_user_ids = $user->follow_users->pluck('id');
-        $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids )->latest()->get();
+        // $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids )->latest()->get();
         $recommended_users = User::recommend($user->id)->whereNotIn('id' , $follow_user_ids)->latest()->get();
         
+        $keyword = $request->input('keyword');
+
+        $query = Post::query();
+
+        if(!empty($keyword)) {
+            $user_posts = $query->where('comment', 'LIKE', "%{$keyword}%")->where('user_id', '!=', $user->id)->latest()->get();
+        }
+        else{
+            $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids )->latest()->get();
+        }
+
+        // $user_posts = $query->latest()->get();     
         
         return view('posts.index', [
             'title' => '投稿一覧',
@@ -31,8 +58,10 @@ class PostController extends Controller
             // 'recommended_users' => User::recommend($user->id)->latest()->get(),
             'recommended_users' => $recommended_users,
             'user' => $user,
+            'keyword' => $keyword, 
         ]);
     }
+
 
     // 新規投稿フォーム
     public function create()

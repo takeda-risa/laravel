@@ -19,6 +19,6 @@
           </label>
       </div>
  
-      <input type="submit" value="ログイン">
+      <input type="submit" value="ログイン" class="in_btn btn">
   </form>
 @endsection

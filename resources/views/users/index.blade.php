@@ -11,13 +11,13 @@
       <form method="post" action="{{ secure_url(route('follows.destroy', $user))}}" class="follow">
         @csrf
         @method('delete')
-        <input type="submit" value="フォロー解除">
+        <input type="submit" value="フォロー解除" class="out_btn btn">
       </form>
     @else
       <form method="post" action="{{ secure_url(route('follows.store')) }}" class="follow">
         @csrf
         <input type="hidden" name="follow_id" value="{{ $user->id }}">
-        <input type="submit" value="フォローする">
+        <input type="submit" value="フォローする" class="btn follow_btn">
       </form>
     @endif  
   @endif

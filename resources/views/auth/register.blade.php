@@ -27,7 +27,7 @@
     </div>
  
     <div>
-      <input type="submit" value="登録">
+      <input type="submit" value="登録" class="in_btn btn">
     </div>
   </form>
 @endsection

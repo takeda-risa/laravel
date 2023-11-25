@@ -4,7 +4,14 @@
  
 @section('content')
   <h1>{{ $title }}</h1>
-  <a href="{{ route('posts.create') }}">新規投稿</a>
+  
+  <form action="{{ route('posts.index') }}" method="GET">
+    @csrf
+    <input type="text" name="keyword" value="@if (isset( $keyword )){{$keyword}}@endif">
+    <input type="submit" value="検索" class="in_btn btn">
+  </form>
+  
+  <a href="{{ route('posts.create') }}" class="new_post">新規投稿</a>
   
   <ul class="recommended_users">
     @forelse($recommended_users as $recommended_user)
@@ -14,13 +21,13 @@
           <form method="post" action="{{ secure_url(route('follows.destroy', $recommended_user))}}" class="follow">
             @csrf
             @method('delete')
-            <input type="submit" value="フォロー解除">
+            <input type="submit" value="フォロー解除" class="out_btn btn">
           </form>
         @else
           <form method="post" action="{{ secure_url(route('follows.store')) }}" class="follow">
             @csrf
             <input type="hidden" name="follow_id" value="{{ $recommended_user->id }}">
-            <input type="submit" value="フォロー">
+            <input type="submit" value="フォロー" class="btn follow_btn">
           </form>
         @endif
       </li>
@@ -30,7 +37,7 @@
     @endforelse
   </ul>
   
-  <ul>
+  <ul class="post">
       @forelse($posts as $post)
           <li>
             {{ $post->user->name }}:
@@ -42,7 +49,7 @@
               <form method="post" class="delete" action="{{ route('posts.destroy', $post) }}">
                 @csrf
                 @method('delete')
-                <input type="submit" value="削除">
+                <input type="submit" value="削除" class="out_btn btn">
               </form>
             @endif
             
