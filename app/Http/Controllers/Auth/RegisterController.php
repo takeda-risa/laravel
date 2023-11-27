@@ -15,7 +15,7 @@ class RegisterController extends Controller
     use RegistersUsers;
  
     // ユーザー登録後はホーム画面に移動
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/posts';
  
     // 未ログインであることを確認
     public function __construct()
@@ -27,7 +27,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:users'],
             // 'email' => ['string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);

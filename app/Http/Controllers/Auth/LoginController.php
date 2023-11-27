@@ -14,6 +14,11 @@ class LoginController extends Controller
     // ログイン後はposts画面に移動
     protected $redirectTo = '/posts';
     
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+    
     // ログアウト後の動作をカスタマイズ
     protected function loggedOut(Request $request)
     {
