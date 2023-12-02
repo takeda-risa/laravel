@@ -16,9 +16,11 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('/posts');
+// });
+
+Route::get('/', [PostController::class, 'index'])->name('index');
 
 Auth::routes();
 
