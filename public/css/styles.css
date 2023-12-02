@@ -37,7 +37,7 @@
 a{
   text-decoration: none;
   transition: 0.5s;
-  color: #5000b8;
+  color: #0068B7;
 }
 a:hover{
   opacity: 0.5;
@@ -107,5 +107,5 @@ li{
 }
 
 .new_post{
-  border-bottom: 3px dotted #5000b8;
+  border-bottom: 1px dashed #0068B7;
 }
