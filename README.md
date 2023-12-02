@@ -1,66 +1,75 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+CodeCamp　最終課題　マイクロブログの作成
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+以下、要件一覧
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+【サインアップ画面】
+・すでにログイン済みの場合は投稿一覧画面にリダイレクトする
+・ユーザー名、パスワード、パスワード確認の入力欄を設置する
+・登録ボタンを押すとユーザー登録ができる
+・各入力欄に、適切と思われるバリデーションを設定する(必須チェック、文字数チェックなど)
+・ログイン画面に遷移できる
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+【ログイン画面】
+・すでにログイン済みの場合は投稿一覧画面にリダイレクトする
+・ユーザー名、パスワードの入力欄を設置する
+・正しいユーザー名・パスワードの組み合わせを入力し、ログインボタンを押すとログインできる
+・各入力欄に、適切と思われるバリデーションを設定する
+・サインアップ画面に遷移できる
 
-## Learning Laravel
+【投稿一覧画面】
+・共通ヘッダーが表示される
+・ログインユーザーの投稿が新着順に一覧表示される（以降この一覧を「タイムライン」と呼びます）
+・各投稿には、「投稿者名」「投稿内容」「投稿日時」を表示する
+・タイムラインに投稿が一件もない場合は「投稿がありません」と表示される
+・タイムラインにおける投稿の表示には投稿時の改行が反映される
+・各投稿に編集画面へのリンクが設定される
+・各投稿に削除ボタンが設定される
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+【共通ヘッダーについて】
+・ログイン後の画面(投稿一覧・新規投稿・投稿編集)の画面上部に表示される。
+・左揃えでロゴまたはサイト名が設置され、投稿一覧画面へのリンクが設定されている
+・右揃えで新規投稿ボタンが設置されている。
+・右揃えでログアウトボタンが設置されている。
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+【新規投稿画面】
+・共通ヘッダーが表示される
+・投稿内容の入力欄と投稿ボタンが設置される
+・適切と思われるバリデーションを設定する
+・適切な内容を入力し、投稿ボタンをクリックすると投稿処理が行われ、投稿一覧画面に遷移する。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+【投稿編集画面】
+・共通ヘッダーが表示される
+・投稿内容の入力欄と投稿ボタンが設置される
+・初期表示で該当の投稿内容が表示される。
+・適切と思われるバリデーションを設定する
+・適切な内容を入力し、投稿ボタンをクリックすると投稿処理が行われ、投稿一覧画面に遷移する。
 
-## Laravel Sponsors
+【一覧画面におすすめユーザーを表示】
+・ヘッダーの下、タイムラインの上におすすめユーザーを3名表示する（表示するユーザーは新着順、ランダムなど任意に設定。未フォローのユーザーのみ、自分自身は除く）
+・おすすめユーザーをクリックすると、ユーザー詳細画面に遷移する
+・他のユーザーが存在しない場合には、「他のユーザーが存在しません」と表示させてください。
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+【ユーザー詳細画面】
+・共通ヘッダーが表示される
+・ユーザー名が表示される
+・ユーザー名の下にフォローボタンが設置される（ただし、自分自身の場合にはフォローボタンは非表示）
+・フォローボタンは、該当のユーザーをフォローしている場合は「フォロー解除」フォローしていない場合は「フォローする」と表示される
+・ユーザーの投稿一覧が表示される
+・「フォローする」をクリックすると、該当のユーザーをフォローする。（フォローの効果は後述）
 
-### Premium Partners
+【タイムラインにフォローユーザーの投稿を表示】
+・自分がフォローしているユーザーがいる場合、一覧画面のタイムラインに自分で投稿した記事だけでなく、該当のユーザーの投稿も表示する（課題1の要件を変更）
+・該当のユーザーの投稿については、編集ボタン及び削除ボタンを表示させない。
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+【検索ボックス】
+・対象ページは投稿一覧ページです
+・投稿一覧ページの上部に検索用のテキストボックスと検索ボタンを設置してください
+・検索を実行後は該当の検索キーワードが検索ボックス内に表示されるようにしてください
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+【検索された投稿の表示】
+・自分以外のユーザーの投稿すべての中から、検索キーワードが投稿内容に含まれる投稿のみを一覧表示する
+・投稿の表示順は元の投稿日時の新着順とする
+・検索ボックス内が空欄の状態で検索ボタンを押した時は通常のタイムラインを表示してください。
