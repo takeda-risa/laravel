@@ -4,7 +4,7 @@
 <header class="header">
   <div>
     <a href="{{ route('posts.index') }}" class="logo">
-      micro blog
+      micro blog.
     </a>
   </div>
   <div>{{ Auth::user()->name }}さん、こんにちは！</div>
